@@ -17,6 +17,7 @@ namespace Congo.Models
         [Required]
         public string Publisher { get; set; }
         [Required]
+        [RegularExpression(@"978\d{10}$")]
         public long ISBN { get; set; }
         [Required]
         public string Category { get; set; }
