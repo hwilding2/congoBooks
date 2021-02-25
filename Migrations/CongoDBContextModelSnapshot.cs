@@ -32,6 +32,9 @@ namespace Congo.Migrations
                     b.Property<long>("ISBN")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("NumPages")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
