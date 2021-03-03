@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Congo.Models.ViewModels;
 
 namespace Congo.Controllers
 {
@@ -15,21 +16,39 @@ namespace Congo.Controllers
 
         private ICongoRepository _repository;
 
+        public int PageSize = 5;
+
         public HomeController(ILogger<HomeController> logger, ICongoRepository repository)
         {
             _logger = logger;
             _repository = repository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string category, int page = 1)
         {
-            return View(_repository.Books);
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                    .Where(p => category == null || p.Category == category)
+                    .OrderBy(b => b.BookID)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize)
+                ,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = category == null ? _repository.Books.Count() :
+                    _repository.Books.Where(x => x.Category == category).Count()
+                },
+                Category = category
+            }) ;
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //We don't currently need a Privacy page but it may be useful in further assignments, so I've commented it out here.
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
