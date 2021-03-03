@@ -24,11 +24,12 @@ namespace Congo.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             return View(new BookListViewModel
             {
                 Books = _repository.Books
+                    .Where(p => category == null || p.Category == category)
                     .OrderBy(b => b.BookID)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize)
@@ -37,15 +38,17 @@ namespace Congo.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repository.Books.Count()
-                }
-            });
+                    TotalNumItems = category == null ? _repository.Books.Count() :
+                    _repository.Books.Where(x => x.Category == category).Count()
+                },
+                Category = category
+            }) ;
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //We don't currently need a Privacy page but it may be useful in further assignments, so I've commented it out here.
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
