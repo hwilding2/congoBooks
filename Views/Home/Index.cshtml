@@ -5,12 +5,7 @@
 @model BookListViewModel
 
 
-<div class="text-center">
-    <h1 class="display-4">Congo</h1>
-    <p>Welcome to Congo, where books are as plentiful as the trees in the second-largest rainforest in the world.</p>
-    <small>(The first was already taken.)</small>
-</div>
-@* New Bootstrap Commands: align-content-center, card-subtitle, display-4   *@
+
 
 <div class="container">
     <div class="row">
@@ -41,6 +36,7 @@
          page-class="btn"
          page-class-normal="btn-outline-dark"
          page-class-selected="btn-primary"
+         page-url-category="@Model.Category"
          class="btn-group pull-right m-1"></div>
 </div>
 
