@@ -65,6 +65,14 @@ namespace Congo
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute("page",
+                    "Books/{category}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("page",
+                    "Books/{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("page",
                     "Books/{page:int}",
                     new { Controller = "Home", action = "Index" });
 
