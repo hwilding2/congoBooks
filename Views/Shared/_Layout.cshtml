@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Congo</title>
+    @* Most styling done in Bootstrap *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
+        @* Classic ASP.Net MVC navbar--gives the overall webpage a clean, sophisticated look *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Congo</a>
@@ -21,7 +23,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @* We don't currently need a Privacy page up, but it may be useful in further assignments, so I've commented it out here. *@
+                        @* Don't currently need a Privacy page up, but it may be useful in further assignments. *@
                         @*<li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
@@ -38,19 +40,20 @@
                         <h1 class="display-4">Congo</h1>
                         <p>Welcome to Congo, where books are as plentiful as the trees in the second-largest rainforest in the world.</p>
                         <small>(The first was already taken.)</small>
+                        @* For those of you who don't get it, this is referring to Amazon. ;) *@
                         <br />
                     </div>
                 </div>
              </div>
              <div class="col-md">
+                 @* Insert category menu using View Component method *@
                 <vc:nav-menu />
              </div>
             </div>
         <div class="row">
+            @* Render HTML written on individual (non-shared) Views such as Index.cshtml *@
             @RenderBody()
         </div>
-        @*<main role="main" class="pb-3">
-        </main>*@
     </div>
 
     <footer class="border-top footer text-muted">
@@ -58,6 +61,7 @@
             &copy; 2021 - Congo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    @* Scripts placed at the end so they run only after the page has completely loaded. *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -9,13 +9,15 @@
 
 <div class="container">
     <div class="row">
+        @* Populate Index page with full list of books *@
         @foreach (var x in Model.Books)
         {
             <div class="col-lg">
                 <div class="card" style="width: 50rem; margin: 1rem;">
                     <div class="card-body">
-                        <h5 class="card-title">@x.BookID. @x.Title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@x.Author</h6>
+                        <h5 class="card-title">[@x.BookID] @x.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@x.AuthFirstName @x.AuthLastName</h6>
+                        <p class="card-text">Classification: @x.Classification</p>
                         <p class="card-text">Category: @x.Category</p>
                         <p class="card-text">Publisher: @x.Publisher </p>
                         <p class="card-text">ISBN: @x.ISBN</p>
@@ -31,6 +33,7 @@
             </div>
         }
     </div>
+    @* Implemented our own tag helpers to dynamically create the links to different pages *@
     <div page-model="@Model.PagingInfo" page-action="Index"
          page-classes-enabled="true"
          page-class="btn"

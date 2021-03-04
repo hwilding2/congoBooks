@@ -3,18 +3,18 @@
     <nav class="navbar navbar-default navbar-expand-lg">
         <div class="container-fluid">
             <ul class="nav navbar-nav m-3">
-                @*Since we have our "Home" Nav Item in our site navbar, I've commented it out here.*@
-                @*<li>
+                <li>
                     <a class="btn btn-block btn-outline-secondary nav-item "
                        asp-action="Index"
                        asp-controller="Home"
                        asp-route-category="">
-                        Home
+                        All
                     </a>
-                </li>*@
+                </li>
                 @foreach (string category in Model)
                 {
                 <li>
+                    @* Dynamically highlight the category that has been selected *@
                     <a class="btn btn-block nav-item @(category == ViewBag.ActiveCategory ? "btn-primary" : "btn-outline-secondary")"
                         asp-action="Index"
                         asp-controller="Home"

@@ -13,9 +13,11 @@ namespace Congo.Migrations
                     BookID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
-                    Author = table.Column<string>(type: "TEXT", nullable: false),
+                    AuthFirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    AuthLastName = table.Column<string>(type: "TEXT", nullable: false),
                     Publisher = table.Column<string>(type: "TEXT", nullable: false),
                     ISBN = table.Column<long>(type: "INTEGER", nullable: false),
+                    Classification = table.Column<string>(type: "TEXT", nullable: false),
                     Category = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<double>(type: "REAL", nullable: false),
                     NumPages = table.Column<int>(type: "INTEGER", nullable: false)

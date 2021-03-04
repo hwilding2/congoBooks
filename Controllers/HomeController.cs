@@ -29,6 +29,7 @@ namespace Congo.Controllers
             return View(new BookListViewModel
             {
                 Books = _repository.Books
+                //Gets appropriate data: filtered by category and page
                     .Where(p => category == null || p.Category == category)
                     .OrderBy(b => b.BookID)
                     .Skip((page - 1) * PageSize)
@@ -38,13 +39,14 @@ namespace Congo.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
+                    //Fixes page numbering to be accurate based on category selected
                     TotalNumItems = category == null ? _repository.Books.Count() :
                     _repository.Books.Where(x => x.Category == category).Count()
                 },
                 Category = category
             }) ;
         }
-        //We don't currently need a Privacy page but it may be useful in further assignments, so I've commented it out here.
+        //Don't currently need a Privacy page but it may be useful in further assignments.
         //public IActionResult Privacy()
         //{
         //    return View();

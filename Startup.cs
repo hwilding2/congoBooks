@@ -29,6 +29,8 @@ namespace Congo
 
             services.AddDbContext<CongoDBContext>(options =>
             {
+                //Connect to SQLite database due to difficulties connecting to SQLServer
+                //Uses Connection string found on appsettings.json
                 options.UseSqlite(Configuration["ConnectionStrings:CongoBooksConnection"]);
             });
 
@@ -57,6 +59,7 @@ namespace Congo
 
             app.UseEndpoints(endpoints =>
             {
+                //Improve the URLs to a pattern that is more user-friendly
                 endpoints.MapControllerRoute("catpage",
                     "{category}/{page:int}",
                     new { Controller = "Home", action = "Index" });
