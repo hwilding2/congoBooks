@@ -27,43 +27,16 @@
                         @*<li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
-                        <li class="nav-item" style="float:right;">
-                            <a class="nav-link text-white">Cart | 1 item, $9.95</a>
-                        </li> @*Not sure how to dynamically pull the total, since the model isn't located in this scope*@
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md">
-                <div class="card p-3" style="width: 35rem; margin: 1rem;">
-                    <div class="text-center">
-                        <h1 class="display-4">Congo</h1>
-                        <p>Welcome to Congo, where books are as plentiful as the trees in the second-largest rainforest in the world.</p>
-                        <small>(The first was already taken.)</small>
-                        @* For those of you who don't get it, this is referring to Amazon. ;) *@
-                        <br />
-                    </div>
-                </div>
-             </div>
-             <div class="col-md">
-                 @* Insert category menu using View Component method *@
-                <vc:nav-menu />
-             </div>
-            </div>
-        <div class="row">
-            @* Render HTML written on individual (non-shared) Views such as Index.cshtml *@
-            @RenderBody()
-        </div>
+    <div class="m-1 p-1">
+        @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Congo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
     @* Scripts placed at the end so they run only after the page has completely loaded. *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

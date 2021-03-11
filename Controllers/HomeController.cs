@@ -24,7 +24,7 @@ namespace Congo.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             return View(new BookListViewModel
             {
@@ -32,12 +32,12 @@ namespace Congo.Controllers
                 //Gets appropriate data: filtered by category and page
                     .Where(p => category == null || p.Category == category)
                     .OrderBy(b => b.BookID)
-                    .Skip((page - 1) * PageSize)
+                    .Skip((pageNum - 1) * PageSize)
                     .Take(PageSize)
                 ,
                 PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     //Fixes page numbering to be accurate based on category selected
                     TotalNumItems = category == null ? _repository.Books.Count() :

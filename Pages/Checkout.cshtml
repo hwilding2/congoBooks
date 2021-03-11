@@ -1,0 +1,40 @@
+﻿@page
+@model Congo.Pages.CheckoutModel
+
+@{
+}
+
+<p>View Cart</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Item</th><th>Quantity</th><th>Price</th><th>Subtotal</th><th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-left">@line.Book.Title</td>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-right">$@line.Book.Price</td>
+                <td class="text-right">@((line.Quantity*line.Book.Price).ToString("c"))</td>
+                <td class="text-center">
+                    <button type="button" class="btn-primary btn-sm pull-right" style="float:right" onclick="RemoveItem(line.Book)">Remove Item</button> @*Not sure how to pull this method.*@
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="text-right" colspan="3">Total:</td>
+            <td class="text-right">@Model.Cart.ComputeTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>

@@ -1,0 +1,31 @@
+﻿@model Book
+
+
+<div class="col-lg">
+    <div class="card" style="width: 50rem; margin: 1rem;">
+        <div class="card-body">
+            <h5 class="card-title">[@Model.BookID] @Model.Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.AuthFirstName @Model.AuthLastName</h6>
+            <p class="card-text">Classification: @Model.Classification</p>
+            <p class="card-text">Category: @Model.Category</p>
+            <p class="card-text">Publisher: @Model.Publisher </p>
+            <p class="card-text">ISBN: @Model.ISBN</p>
+            <p class="card-text">Pages: @Model.NumPages</p>
+            <p class="card-text">Price: $@Model.Price</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+        <form id="@Model.BookID" asp-page="/Checkout" method="post">
+            <input type="hidden" asp-for="BookID" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+            <span class="cart-text p-1">
+                <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                    Add "@Model.Title" to Cart
+                </button>
+            </span>
+        </form>
+    </div>
+</div>
+<div class="col-sm">
+    <br /><br /><br />
+    <img class="align-content-center" src="~/book.svg" />
+</div>
