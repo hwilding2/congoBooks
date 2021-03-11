@@ -4,7 +4,7 @@
 @{
 }
 
-<p>View Cart</p>
+<p class="display-4">View Cart</p>
 
 <table class="table table-bordered table-striped">
 
@@ -22,7 +22,11 @@
                 <td class="text-right">$@line.Book.Price</td>
                 <td class="text-right">@((line.Quantity*line.Book.Price).ToString("c"))</td>
                 <td class="text-center">
-                    <button type="button" class="btn-primary btn-sm pull-right" style="float:right" onclick="RemoveItem(line.Book)">Remove Item</button> @*Not sure how to pull this method.*@
+                    <form asp-page-handler="Remove" method="post">
+                        <input type="hidden" name="BookID" value="@line.Book.BookID" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
                 </td>
             </tr>
         }

@@ -7,6 +7,7 @@
     @* Most styling done in Bootstrap *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -27,9 +28,11 @@
                         @*<li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
-                        <li class="nav-item" style="float:right;">
-                            <a class="nav-link text-white">Cart | 1 item, $9.95</a>
-                        </li> @*Not sure how to dynamically pull the total, since the model isn't located in this scope*@
+                        <li class="nav-item clearfix" style="margin:0.3rem 0rem 0rem 46rem;">
+                            <div class="btn-nav navbar-btn float-right">
+                                <vc:cart-summary />
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

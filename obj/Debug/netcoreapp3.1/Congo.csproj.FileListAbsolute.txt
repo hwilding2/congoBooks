@@ -81,3 +81,5 @@ C:\Users\haven\Documents\Academics\413\Congo\obj\Debug\netcoreapp3.1\Razor\Pages
 C:\Users\haven\Documents\Academics\413\Congo\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
 C:\Users\haven\Documents\Academics\413\Congo\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_CartLayout.cshtml.g.cs
 C:\Users\haven\Documents\Academics\413\Congo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\BookSummary.cshtml.g.cs
+C:\Users\haven\Documents\Academics\413\Congo\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\haven\Documents\Academics\413\Congo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CartSummary\Default.cshtml.g.cs

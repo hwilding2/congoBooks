@@ -9,7 +9,7 @@ namespace Congo.Models
     {
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
-        public void AddItem(Book pendingBook, int qty)
+        public virtual void AddItem(Book pendingBook, int qty)
         {
             CartLine line = Lines.Where(b => b.Book.BookID == pendingBook.BookID)
                 .FirstOrDefault();
@@ -28,10 +28,10 @@ namespace Congo.Models
             }
         }
 
-        public void RemoveItem(Book pendingBook) =>
+        public virtual void RemoveItem(Book pendingBook) =>
             Lines.RemoveAll(x => x.Book.BookID == pendingBook.BookID);
 
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
 
         public decimal ComputeTotal() => (decimal)Lines.Sum(e => e.Book.Price * e.Quantity);
    
